@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="weather">Погода</string>
+    <string name="view_weather">Смотреть погоду</string>
+    <string name="input_city">Введите город</string>
+    <string name="temperature">Температура воздуха</string>
+    <string name="winCb">Ветер</string>
+    <string name="humidityCb">Влажность</string>
 </resources>
