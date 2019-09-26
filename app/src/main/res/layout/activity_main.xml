@@ -6,17 +6,77 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <TextView
         android:id="@+id/textViev1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:text="@string/weather"
         android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/inputCityEt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:cursorVisible="true"
+        android:ems="10"
+        android:hint="@string/input_city"
+        android:inputType="text|textCapWords"
+        android:saveEnabled="true"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViev1"
+        android:autofillHints="" />
+
+    <LinearLayout
+        android:layout_width="229dp"
+        android:layout_height="114dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/viewWatherBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputCityEt">
+
+        <CheckBox
+            android:id="@+id/tempCb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickTempCb"
+            android:text="@string/temperature" />
+
+        <CheckBox
+            android:id="@+id/windCb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickWindCb"
+            android:text="@string/winCb" />
+
+        <CheckBox
+            android:id="@+id/humidityCb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickhumidityCb"
+            android:text="@string/humidityCb" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/viewWatherBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="188dp"
+        android:onClick="onClick"
+        android:text="@string/view_weather"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.047" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
