@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
 
@@ -13,57 +14,55 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="@string/weather"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/inputCityEt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
+        android:autofillHints=""
         android:cursorVisible="true"
         android:ems="10"
         android:hint="@string/input_city"
         android:inputType="text|textCapWords"
         android:saveEnabled="true"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViev1"
-        android:autofillHints="" />
+        android:textSize="22sp" />
+
+    <!--    <Spinner-->
+    <!--        android:id="@+id/spinner"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:entries="@array/cityList"-->
+    <!--        android:layout_marginTop="50dp"-->
+    <!--        android:gravity="center_horizontal|center_vertical" />-->
 
     <LinearLayout
         android:layout_width="229dp"
         android:layout_height="114dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/viewWatherBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputCityEt">
+        android:orientation="vertical">
 
         <CheckBox
             android:id="@+id/tempCb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onClickTempCheckBox"
-            android:text="@string/temperature" />
+            android:text="@string/tempNameCheckBox" />
 
         <CheckBox
             android:id="@+id/windCb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onClickWindCheckBox"
-            android:text="@string/winCb" />
+            android:text="@string/windNameCheckBox" />
 
         <CheckBox
             android:id="@+id/humidityCb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onClickHumidityCheckBox"
-            android:text="@string/humidityCb" />
+            android:text="@string/humidityNameCheckBox" />
+
     </LinearLayout>
 
     <Button
@@ -72,11 +71,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="188dp"
         android:onClick="onClick"
-        android:text="@string/view_weather"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints" />
+        android:text="@string/view_weather" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
