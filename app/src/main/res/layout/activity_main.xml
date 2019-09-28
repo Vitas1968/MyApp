@@ -48,21 +48,21 @@
             android:id="@+id/tempCb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="onClickTempCb"
+            android:onClick="onClickTempCheckBox"
             android:text="@string/temperature" />
 
         <CheckBox
             android:id="@+id/windCb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="onClickWindCb"
+            android:onClick="onClickWindCheckBox"
             android:text="@string/winCb" />
 
         <CheckBox
             android:id="@+id/humidityCb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="onClickhumidityCb"
+            android:onClick="onClickHumidityCheckBox"
             android:text="@string/humidityCb" />
     </LinearLayout>
 
