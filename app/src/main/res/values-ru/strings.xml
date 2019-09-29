@@ -6,6 +6,7 @@
     <string name="tempNameCheckBox">Температура воздуха</string>
     <string name="windNameCheckBox">Ветер</string>
     <string name="humidityNameCheckBox">Влажность</string>
+    <string name="cityNotInput">Город не введен</string>
 
     <string-array name="cityList">
         <item>Москва</item>
