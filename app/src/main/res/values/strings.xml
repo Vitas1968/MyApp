@@ -11,6 +11,7 @@
     <string name="tempNameCheckBox">Temperature</string>
     <string name="windNameCheckBox">Wind</string>
     <string name="humidityNameCheckBox">Humidity</string>
+    <string name="cityNotInput">You dont input city</string>
 
     <string-array name="cityList">
         <item>Moscow</item>
