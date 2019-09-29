@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,8 +12,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/custom_border"
         android:text="@string/weather"
+        android:textStyle="bold"
         android:textSize="25sp" />
 
     <Spinner
@@ -22,47 +23,63 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:entries="@array/cityList"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
+        android:textStyle="bold"
+        android:background="@drawable/custom_border"
             android:gravity="center_horizontal|center_vertical" />
 
     <LinearLayout
-        android:layout_width="229dp"
-        android:layout_height="114dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="20dp"
-        android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
-        <CheckBox
-            android:id="@+id/tempCb"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onClickTempCheckBox"
-            android:text="@string/tempNameCheckBox" />
+        <LinearLayout
+            android:layout_width="229dp"
+            android:layout_height="114dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical">
 
-        <CheckBox
-            android:id="@+id/windCb"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onClickWindCheckBox"
-            android:text="@string/windNameCheckBox" />
+            <CheckBox
+                android:id="@+id/tempCb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onClickTempCheckBox"
+                android:background="@drawable/custom_border"
+                android:textStyle="bold"
+                android:text="@string/tempNameCheckBox" />
 
-        <CheckBox
-            android:id="@+id/humidityCb"
-            android:layout_width="match_parent"
+            <CheckBox
+                android:id="@+id/windCb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onClickWindCheckBox"
+                android:background="@drawable/custom_border"
+                android:textStyle="bold"
+                android:text="@string/windNameCheckBox" />
+
+            <CheckBox
+                android:id="@+id/humidityCb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onClickHumidityCheckBox"
+                android:background="@drawable/custom_border"
+                android:textStyle="bold"
+                android:text="@string/humidityNameCheckBox" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/viewWatherBtn"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onClickHumidityCheckBox"
-            android:text="@string/humidityNameCheckBox" />
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="70dp"
+            android:background="@drawable/custom_border"
+            android:onClick="onClick"
+            android:textStyle="bold"
+            android:text="@string/view_weather" />
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/viewWatherBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="188dp"
-        android:onClick="onClick"
-        android:text="@string/view_weather" />
 
 </LinearLayout>
