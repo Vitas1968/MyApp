@@ -5,34 +5,28 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.Toast;
-
+import android.widget.Spinner;
 
 public class MainActivity extends AppCompatActivity {
     private static  final String LOG_TAG ="LOG_TAG";
-    private EditText inputCityEditText;
-    private static Intent intent;
-    private String city;
+    private Intent intent;
+    private Spinner spinner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-        inputCity();
+        selectItemSpinner();
         Log.d(LOG_TAG,"Выполнен onCreate()");
     }
-    private void initView()
-    {
+    private void initView() {
         intent=new Intent(this,SecondActivity.class);
-        inputCityEditText=findViewById(R.id.inputCityEt);
-        inputCityEditText.requestFocus();
+        spinner=findViewById(R.id.spinner);
         Log.d(LOG_TAG,"Выполнен initView()");
     }
 
@@ -43,33 +37,11 @@ public class MainActivity extends AppCompatActivity {
                                        View itemSelected,
                                        int selectedItemPosition,
                                        long selectedId) {
-                String[] choose = getResources().getStringArray(R.array.cityList);
-                //textView2.setText(choose[selectedItemPosition]);
-                selected=choose[selectedItemPosition];
-                intent.putExtra("catName",selected);
+                intent.putExtra("citySelected",selectedItemPosition);
             }
             public void onNothingSelected(AdapterView<?> parent) {}
         });
 
-    }
-
-    private void inputCity() //пойдет на выход
-    {
-        inputCityEditText.setOnKeyListener(new View.OnKeyListener() {
-           public boolean onKey(View v, int keyCode, KeyEvent event)
-           {
-             if(event.getAction() == KeyEvent.ACTION_DOWN &&
-                (keyCode == KeyEvent.KEYCODE_ENTER)){
-                 city = inputCityEditText.getText().toString();
-                 Toast toast= Toast.makeText(getApplicationContext(), city, Toast.LENGTH_LONG);
-                 toast.setGravity(Gravity.CENTER, 0, 0);
-                 toast.show();
-                 return true;
-             }
-                 return false;
-           }
-        }
-        );
     }
 
     @Override
@@ -110,8 +82,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClick(View view)
     {
-        inputCityEditText.getText().clear();
-        intent.putExtra("city_name",city);
         Log.d(LOG_TAG,"Вызван onClick()");
         startActivity(intent);
     }
