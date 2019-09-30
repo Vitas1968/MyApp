@@ -1,4 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MyApp</string>
+    <string name="app_name" translatable="false">MyApp</string>
     <string name="weather">Weather</string>
+
+    <string name="input_city">Input city</string>
+    <string name="view_weather">Watch weather</string>
+    <string name="temp" translatable="false">25 C</string>
+    <string name="wind" translatable="false">8 m/s</string>
+    <string name="humidity" translatable="false">85%</string>
+    <string name="temperature">Temperature</string>
+    <string name="winCb">Wind</string>
+    <string name="humidityCb">Humidity</string>
+
+
 </resources>
