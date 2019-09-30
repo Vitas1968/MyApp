@@ -3,7 +3,15 @@
     <string name="weather">Погода</string>
     <string name="view_weather">Смотреть погоду</string>
     <string name="input_city">Введите город</string>
-    <string name="temperature">Температура воздуха</string>
-    <string name="winCb">Ветер</string>
-    <string name="humidityCb">Влажность</string>
+    <string name="tempNameCheckBox">Температура воздуха</string>
+    <string name="windNameCheckBox">Ветер</string>
+    <string name="humidityNameCheckBox">Влажность</string>
+    <string name="cityNotInput">Город не введен</string>
+
+    <string-array name="cityList">
+        <item>Москва</item>
+        <item>Тула</item>
+        <item>Сочи</item>
+        <item>Владивосток</item>
+    </string-array>
 </resources>

@@ -5,65 +5,44 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.Toast;
-
+import android.widget.Spinner;
 
 public class MainActivity extends AppCompatActivity {
     private static  final String LOG_TAG ="LOG_TAG";
+    private Intent intent;
+    private Spinner spinner;
 
-    private EditText inputCityEt;
-//    private CheckBox tempCb;
-// private Button viewWeatherBtn;
-//    private CheckBox windCb;
-//    private CheckBox humidityCb;
-    private static Intent intent;
-    private String city;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-        inputCity();
+        selectItemSpinner();
         Log.d(LOG_TAG,"Выполнен onCreate()");
-
     }
-    private void initView(){
+    private void initView() {
         intent=new Intent(this,SecondActivity.class);
-
-        inputCityEt=findViewById(R.id.inputCityEt);
-        inputCityEt.requestFocus();
-//        tempCb=findViewById(R.id.tempCb);
-//        viewWeatherBtn=findViewById(R.id.viewWatherBtn);
-//        windCb=findViewById(R.id.windCb);
-//        humidityCb=findViewById(R.id.humidityCb);
+        spinner=findViewById(R.id.spinner);
         Log.d(LOG_TAG,"Выполнен initView()");
     }
 
-    private void inputCity(){
-        inputCityEt.setOnKeyListener(new View.OnKeyListener() {
-           public boolean onKey(View v, int keyCode, KeyEvent event) {
-             if(event.getAction() == KeyEvent.ACTION_DOWN &&
-                (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                // сохраняем текст, введенный до нажатия Enter в переменную
-                 city = inputCityEt.getText().toString();
-                  Toast toast= Toast.makeText(getApplicationContext(),
-                                              city,
-                                               Toast.LENGTH_LONG);
-                                               toast.setGravity(Gravity.CENTER, 0, 0);
-                                               toast.show();
-              return true;
-             }
-              return false;
-             }
-             }
-        );
-    }
+    private void selectItemSpinner()
+    {
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent,
+                                       View itemSelected,
+                                       int selectedItemPosition,
+                                       long selectedId) {
+                intent.putExtra("citySelected",selectedItemPosition);
+            }
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
 
+    }
 
     @Override
     protected void onStart() {
@@ -101,33 +80,31 @@ public class MainActivity extends AppCompatActivity {
         Log.d(LOG_TAG,"Выполнен onPause()");
     }
 
-    public void onClick(View view) {
-        inputCityEt.getText().clear();
-        //intent=new Intent(this,SecondActivity.class);
-        intent.putExtra("city_name",city);
+    public void onClick(View view)
+    {
         Log.d(LOG_TAG,"Вызван onClick()");
         startActivity(intent);
     }
 
-    public void onClickTempCb(View view) {
+    public void onClickTempCheckBox(View view)
+    {
         CheckBox checkBox = (CheckBox) view;
         Boolean checked= checkBox.isChecked();
         Log.d(LOG_TAG,checked.toString());
         intent.putExtra("temp",checked);
-
     }
-    public void onClickWindCb(View view) {
+
+    public void onClickWindCheckBox(View view)
+    {
         CheckBox checkBox = (CheckBox) view;
         boolean checked= checkBox.isChecked();
-
-            intent.putExtra("wind",checked);
-
+        intent.putExtra("wind",checked);
     }
-    public void onClickhumidityCb(View view) {
+
+    public void onClickHumidityCheckBox(View view)
+    {
         CheckBox checkBox = (CheckBox) view;
         boolean checked= checkBox.isChecked();
-            intent.putExtra("humidity",checked);
-
-
+        intent.putExtra("humidity",checked);
     }
 }

@@ -1,20 +1,19 @@
 package com.example.googlelerning.myapp;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.widget.TextView;
 
 public class SecondActivity extends AppCompatActivity {
-    
+
     private TextView cityTv;
     private TextView tempTv;
     private TextView windTv;
     private TextView humidityTv;
     private Intent intent;
-
-
+    private Resources resources;
+    private int indexCity;
 
 
     @Override
@@ -22,61 +21,57 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
         initView();
-        outCity(intent);
-        outTemp(intent);
-        outWind(intent);
-        outHumidity(intent);
-
+        outCity();
+        outTemp();
+        outWind();
+        outHumidity();
     }
 
-
-        private void initView() {
+    private void initView() {
         intent=getIntent();
-       cityTv=findViewById(R.id.myCityTv);
-       tempTv=findViewById(R.id.myTempTv);
-       windTv=findViewById(R.id.windTv);
-       humidityTv=findViewById(R.id.humidityTv);
-
+        cityTv=findViewById(R.id.myCityTv);
+        tempTv=findViewById(R.id.myTempTv);
+        windTv=findViewById(R.id.windTv);
+        humidityTv=findViewById(R.id.humidityTv);
+        resources=getResources();
+        indexCity=intent.getIntExtra("citySelected", -1);
     }
 
-    private void outCity(Intent intent){
-        String city="You don't input city";
-        if(intent.getStringExtra("city_name")!=null)
-            city=intent.getStringExtra("city_name");
+    private void outCity(){
+        String []cityList=resources.getStringArray(R.array.cityList);
+        String city = cityList[indexCity];
         cityTv.setText(city);
     }
-    private void outTemp(Intent intent){
+
+    private void outTemp(){
         boolean checked =intent.getBooleanExtra("temp",false);
         if (checked) {
-            String tmp =getResources().getString(R.string.temperature)+
-                    " : "+getResources().getString(R.string.temp);
+        String []tempList = resources.getStringArray(R.array.tempList);
+            String tmp =resources.getString(R.string.tempNameCheckBox)
+                                                    +" : "
+                                                    + tempList[indexCity];
             tempTv.setText(tmp);}
     }
-    private void outWind(Intent intent){
+
+    private void outWind(){
         boolean checked =intent.getBooleanExtra("wind",false);
-        if (checked)
-        {
-            String win =getResources().getString(R.string.winCb)+
-                    " : "+getResources().getString(R.string.wind);
-            windTv.setText(win);
+        if (checked) {
+        String [] windList = resources.getStringArray(R.array.windList);
+        String win =getResources().getString(R.string.windNameCheckBox)
+                                                     +" : "
+                                                     +windList[indexCity];
+        windTv.setText(win);
         }
-        }
-//         if (intent.getBooleanExtra("wind",false))
-//            windTv.setText(R.string.wind);
+    }
 
-    private void outHumidity(Intent intent){
+    private void outHumidity(){
         boolean checked =intent.getBooleanExtra("humidity",false);
-
-        if (checked)
-        {
-            String hum =getResources().getString(R.string.humidityCb)+
-                    " : "+getResources().getString(R.string.humidity);
-            humidityTv.setText(hum);
+        if (checked) {
+            String [] humidityList = resources.getStringArray(R.array.humidityList);
+                String hum =getResources().getString(R.string.humidityNameCheckBox)
+                                                            +" : "
+                                                            + humidityList[indexCity];
+                humidityTv.setText(hum);
         }
-
-        }
-//         if (intent.getBooleanExtra("humidity",false))
-//            humidityTv.setText(R.string.humidity);
-
-
+    }
 }

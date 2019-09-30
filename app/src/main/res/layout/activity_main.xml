@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
 
@@ -11,72 +11,70 @@
         android:id="@+id/textViev1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
         android:text="@string/weather"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:background="@drawable/custom_border"
+        android:textStyle="bold"
+        android:textSize="25sp" />
 
-    <EditText
-        android:id="@+id/inputCityEt"
+    <Spinner
+        android:id="@+id/spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:cursorVisible="true"
-        android:ems="10"
-        android:hint="@string/input_city"
-        android:inputType="text|textCapWords"
-        android:saveEnabled="true"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViev1"
-        android:autofillHints="" />
+        android:layout_marginTop="50dp"
+        android:entries="@array/cityList"
+        android:background="@drawable/custom_border"
+        android:textStyle="bold"
+        android:gravity="center_horizontal|center_vertical" />
 
     <LinearLayout
         android:layout_width="229dp"
         android:layout_height="114dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/viewWatherBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputCityEt">
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+        android:orientation="vertical">
 
         <CheckBox
             android:id="@+id/tempCb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="onClickTempCb"
-            android:text="@string/temperature" />
+            android:onClick="onClickTempCheckBox"
+            android:background="@drawable/custom_border"
+            android:textStyle="bold"
+            android:text="@string/tempNameCheckBox" />
 
         <CheckBox
             android:id="@+id/windCb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="onClickWindCb"
-            android:text="@string/winCb" />
+            android:onClick="onClickWindCheckBox"
+            android:background="@drawable/custom_border"
+            android:textStyle="bold"
+            android:text="@string/windNameCheckBox" />
 
         <CheckBox
             android:id="@+id/humidityCb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="onClickhumidityCb"
-            android:text="@string/humidityCb" />
+            android:onClick="onClickHumidityCheckBox"
+            android:background="@drawable/custom_border"
+            android:textStyle="bold"
+            android:text="@string/humidityNameCheckBox" />
+
     </LinearLayout>
 
     <Button
         android:id="@+id/viewWatherBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
         android:layout_marginBottom="188dp"
+        android:background="@drawable/custom_border"
         android:onClick="onClick"
+        android:padding="5dp"
         android:text="@string/view_weather"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints" />
+        android:textStyle="bold" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
