@@ -18,5 +18,41 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+    <style name="StyleOfTitleTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_marginTop">50dp</item>
+        <item name="android:background">@drawable/custom_border</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">25sp</item>
+    </style>
+
+    <style name="StyleOfSpinner">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/custom_border</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="StyleOfButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/custom_border</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="AppTheme.ThemeOfActivitySecond" >
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@android:color/holo_blue_dark</item>
+    </style>
+
+    <style name="StyleOfTextVievSeconActivity">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:hint">@string/no_data</item>
+    </style>
+
 
 </resources>
