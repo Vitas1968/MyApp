@@ -31,36 +31,27 @@
 
     <LinearLayout
         android:layout_width="229dp"
-        android:layout_height="114dp"
-        android:layout_marginTop="30dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
         android:orientation="vertical">
 
         <CheckBox
             android:id="@+id/tempCb"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/StyleOfCheckBox"
             android:onClick="onClickTempCheckBox"
-            android:background="@drawable/custom_border"
-            android:textStyle="bold"
             android:text="@string/tempNameCheckBox" />
 
         <CheckBox
             android:id="@+id/windCb"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/StyleOfCheckBox"
             android:onClick="onClickWindCheckBox"
-            android:background="@drawable/custom_border"
-            android:textStyle="bold"
             android:text="@string/windNameCheckBox" />
 
         <CheckBox
             android:id="@+id/humidityCb"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/StyleOfCheckBox"
             android:onClick="onClickHumidityCheckBox"
-            android:background="@drawable/custom_border"
-            android:textStyle="bold"
             android:text="@string/humidityNameCheckBox" />
 
     </LinearLayout>
