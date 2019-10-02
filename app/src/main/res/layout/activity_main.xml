@@ -16,6 +16,7 @@
     <Spinner
         android:id="@+id/spinner"
         android:layout_marginTop="50dp"
+        android:layout_marginStart="20dp"
         android:entries="@array/cityList"
         android:gravity="center_horizontal|center_vertical"
         style="@style/StyleOfSpinner" />
