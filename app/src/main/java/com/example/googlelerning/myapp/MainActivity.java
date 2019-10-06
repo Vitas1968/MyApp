@@ -14,8 +14,8 @@ public class MainActivity extends AppCompatActivity implements ListCityFragment.
 
     @Override
     public void onFragmentInteraction(Intent intent) {
-        intent.setClass(this,SecondActivity.class);
-        startActivity(intent);
+//        intent.setClass(this,SecondActivity.class);
+//        startActivity(intent);
     }
 
 
