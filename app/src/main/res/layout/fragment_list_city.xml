@@ -31,19 +31,16 @@
         <CheckBox
             android:id="@+id/tempCb"
             style="@style/StyleOfCheckBox"
-            android:onClick="onClickTempCheckBox"
             android:text="@string/tempNameCheckBox" />
 
         <CheckBox
             android:id="@+id/windCb"
             style="@style/StyleOfCheckBox"
-            android:onClick="onClickWindCheckBox"
             android:text="@string/windNameCheckBox" />
 
         <CheckBox
             android:id="@+id/humidityCb"
             style="@style/StyleOfCheckBox"
-            android:onClick="onClickHumidityCheckBox"
             android:text="@string/humidityNameCheckBox" />
 
     </LinearLayout>
@@ -53,7 +50,6 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="188dp"
-        android:onClick="onClick"
         android:text="@string/view_weather"
         style="@style/StyleOfButton" />
 
