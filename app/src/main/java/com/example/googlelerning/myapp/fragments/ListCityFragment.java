@@ -16,6 +16,9 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.Spinner;
 import com.example.googlelerning.myapp.R;
+import com.example.googlelerning.myapp.SecondActivity;
+
+import java.util.Objects;
 
 public class ListCityFragment extends Fragment {
     private static  final String LOG_TAG ="ListCityFragment";
@@ -72,9 +75,8 @@ public class ListCityFragment extends Fragment {
                 intent.putExtra("isCheckedHumCheckBox",isCheckedHumCheckBox);
                 intent.putExtra("isCheckedWindCheckBox",isCheckedWindCheckBox);
                 intent.putExtra("isCheckedTempCheckBox",isCheckedTempCheckBox);
-                if (mListener != null) {
-                    mListener.onFragmentInteraction(intent);
-                }
+                intent.setClass(Objects.requireNonNull(getActivity()), SecondActivity.class);
+                startActivity(intent);
             }
         });
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
