@@ -16,12 +16,12 @@ import com.example.googlelerning.myapp.R;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link ShowWeatheFragment.OnFragmentInteractionListener} interface
+ * {@link ShowWeatherFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link ShowWeatheFragment#newInstance} factory method to
+ * Use the {@link ShowWeatherFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ShowWeatheFragment extends Fragment {
+public class ShowWeatherFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -33,7 +33,7 @@ public class ShowWeatheFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public ShowWeatheFragment() {
+    public ShowWeatherFragment() {
         // Required empty public constructor
     }
 
@@ -46,8 +46,8 @@ public class ShowWeatheFragment extends Fragment {
      * @return A new instance of fragment ShowWeatheFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ShowWeatheFragment newInstance(String param1, String param2) {
-        ShowWeatheFragment fragment = new ShowWeatheFragment();
+    private static ShowWeatherFragment newInstance(String param1, String param2) {
+        ShowWeatherFragment fragment = new ShowWeatherFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
