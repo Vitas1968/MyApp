@@ -16,8 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private Spinner spinner;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
@@ -27,11 +26,11 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         intent=new Intent(this,SecondActivity.class);
         spinner=findViewById(R.id.spinner);
+        //swtchNightMode=findViewById(R.id.swtchNightMode);
         Log.d(LOG_TAG,"Выполнен initView()");
     }
 
-    private void selectItemSpinner()
-    {
+    private void selectItemSpinner() {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent,
                                        View itemSelected,
