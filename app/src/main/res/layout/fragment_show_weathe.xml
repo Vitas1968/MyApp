@@ -1,14 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ShowWeatheFragment">
+    android:background="@drawable/weather"
+    tools:context=".SecondActivity">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/myCityTv"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/custom_border"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/StyleOfTextVievSeconActivity" />
+    <TextView
+        android:id="@+id/myTempTv"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/custom_border"
+        style="@style/StyleOfTextVievSeconActivity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myCityTv" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/windTv"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/custom_border"
+        style="@style/StyleOfTextVievSeconActivity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myTempTv" />
+
+    <TextView
+        android:id="@+id/humidityTv"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/custom_border"
+        style="@style/StyleOfTextVievSeconActivity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/windTv" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
