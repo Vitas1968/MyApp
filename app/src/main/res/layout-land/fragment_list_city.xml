@@ -20,13 +20,16 @@
         android:entries="@array/cityList"
         android:gravity="center_horizontal|center_vertical"
         style="@style/StyleOfSpinner" />
-
     <LinearLayout
-        android:layout_width="229dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="229dp"
+            android:layout_height="114dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical">
 
         <CheckBox
             android:id="@+id/tempCb"
@@ -42,15 +45,16 @@
             android:id="@+id/humidityCb"
             style="@style/StyleOfCheckBox"
             android:text="@string/humidityNameCheckBox" />
-
-    </LinearLayout>
+        </LinearLayout>
 
     <Button
         android:id="@+id/viewWatherBtn"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="188dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="70dp"
         android:text="@string/view_weather"
         style="@style/StyleOfButton" />
+    </LinearLayout>
 
 </LinearLayout>
