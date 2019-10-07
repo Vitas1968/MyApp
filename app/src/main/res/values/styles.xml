@@ -28,6 +28,16 @@
         <item name="android:textSize">25sp</item>
     </style>
 
+    <style name="StyleHorizontalTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:background">@drawable/custom_border</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">25sp</item>
+    </style>
+
     <style name="StyleOfSpinner">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
