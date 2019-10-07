@@ -29,13 +29,7 @@ public class ListCityFragment extends Fragment {
     private boolean isCheckedTempCheckBox,isCheckedWindCheckBox,isCheckedHumCheckBox;
     private OnFragmentInteractionListener mListener;
 
-    private void initView(View view){
-        tempCheckBox=view.findViewById(R.id.tempCb);
-        windCheckBox=view.findViewById(R.id.windCb);
-        humCheckBox=view.findViewById(R.id.humidityCb);
-        viewWatherBtn=view.findViewById(R.id.viewWatherBtn);
-        spinner=view.findViewById(R.id.spinner);
-    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,8 +84,17 @@ public class ListCityFragment extends Fragment {
             }
         });
 
+
         Log.d(LOG_TAG,"Выполнен onCreateView()");
         return view;
+    }
+
+    private void initView(View view){
+        tempCheckBox=view.findViewById(R.id.tempCb);
+        windCheckBox=view.findViewById(R.id.windCb);
+        humCheckBox=view.findViewById(R.id.humidityCb);
+        viewWatherBtn=view.findViewById(R.id.viewWatherBtn);
+        spinner=view.findViewById(R.id.spinner);
     }
 
 
@@ -153,6 +156,7 @@ public class ListCityFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        setRetainInstance(true);
         Log.d(LOG_TAG,"Выполнен onViewCreated()");
     }
 
