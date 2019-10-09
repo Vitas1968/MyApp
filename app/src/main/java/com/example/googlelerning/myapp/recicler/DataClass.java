@@ -7,7 +7,7 @@ public class DataClass {
     Drawable drawable;
     String text;
 
-    DataClass(Drawable drawable, String text) {
+    public DataClass(Drawable drawable, String text) {
         this.drawable = drawable;
         this.text = text;
 
