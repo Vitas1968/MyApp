@@ -1,11 +1,17 @@
 package com.example.googlelerning.myapp;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.TextView;
+import com.example.googlelerning.myapp.fragments.ShowWeatherFragment;
 
-public class SecondActivity extends AppCompatActivity {
+import java.util.Objects;
+
+public class SecondActivity extends AppCompatActivity implements ShowWeatherFragment.OnFragmentInteractionListener {
 
     private TextView cityTv;
     private TextView tempTv;
@@ -20,21 +26,22 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-        initView();
+        Fragment showWeather = getSupportFragmentManager().findFragmentById(R.id.weather);
+        initView(Objects.requireNonNull(showWeather));
         outCity();
         outTemp();
         outWind();
         outHumidity();
     }
 
-    private void initView() {
+    private void initView(Fragment fr) {
         intent=getIntent();
-        cityTv=findViewById(R.id.myCityTv);
-        tempTv=findViewById(R.id.myTempTv);
-        windTv=findViewById(R.id.windTv);
-        humidityTv=findViewById(R.id.humidityTv);
+        cityTv= Objects.requireNonNull(fr.getView()).findViewById(R.id.myCityTv);
+        tempTv=fr.getView().findViewById(R.id.myTempTv);
+        windTv=fr.getView().findViewById(R.id.windTv);
+        humidityTv=fr.getView().findViewById(R.id.humidityTv);
         resources=getResources();
-        indexCity=intent.getIntExtra("citySelected", -1);
+        indexCity=intent.getIntExtra("spinnerItemPosition", -1);
     }
 
     private void outCity(){
@@ -44,7 +51,7 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     private void outTemp(){
-        boolean checked =intent.getBooleanExtra("temp",false);
+        boolean checked =intent.getBooleanExtra("isCheckedTempCheckBox",false);
         if (checked) {
         String []tempList = resources.getStringArray(R.array.tempList);
             String tmp =resources.getString(R.string.tempNameCheckBox)
@@ -54,7 +61,7 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     private void outWind(){
-        boolean checked =intent.getBooleanExtra("wind",false);
+        boolean checked =intent.getBooleanExtra("isCheckedWindCheckBox",false);
         if (checked) {
         String [] windList = resources.getStringArray(R.array.windList);
         String win =getResources().getString(R.string.windNameCheckBox)
@@ -65,7 +72,7 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     private void outHumidity(){
-        boolean checked =intent.getBooleanExtra("humidity",false);
+        boolean checked =intent.getBooleanExtra("isCheckedHumCheckBox",false);
         if (checked) {
             String [] humidityList = resources.getStringArray(R.array.humidityList);
                 String hum =getResources().getString(R.string.humidityNameCheckBox)
@@ -73,5 +80,10 @@ public class SecondActivity extends AppCompatActivity {
                                                             + humidityList[indexCity];
                 humidityTv.setText(hum);
         }
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }

@@ -21,25 +21,28 @@
         <item>Vladivostok</item>
     </string-array>
 
-        <string-array name="windList" translatable="false">
-            <item>8 m/s</item>
-            <item>12 m/s</item>
-            <item>5 m/s</item>
-            <item>18 m/s</item>
-        </string-array>
+    <string-array name="windList" translatable="false">
+        <item>8 m/s</item>
+        <item>12 m/s</item>
+        <item>5 m/s</item>
+        <item>18 m/s</item>
+    </string-array>
 
-        <string-array name="humidityList" translatable="false">
-            <item>85 %</item>
-            <item>80 %</item>
-            <item>90 %</item>
-            <item>95 %</item>
-        </string-array>
+    <string-array name="humidityList" translatable="false">
+        <item>85 %</item>
+        <item>80 %</item>
+        <item>90 %</item>
+        <item>95 %</item>
+    </string-array>
 
-        <string-array name="tempList" translatable="false">
-            <item>12 C</item>
-            <item>15 C</item>
-            <item>30 C</item>
-            <item>25 C</item>
-        </string-array>
+    <string-array name="tempList" translatable="false">
+        <item>12 C</item>
+        <item>15 C</item>
+        <item>30 C</item>
+        <item>25 C</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
