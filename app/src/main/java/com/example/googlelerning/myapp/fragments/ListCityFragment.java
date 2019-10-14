@@ -18,6 +18,7 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 import com.example.googlelerning.myapp.R;
 import com.example.googlelerning.myapp.SecondActivity;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import java.util.Objects;
@@ -25,7 +26,7 @@ import java.util.Objects;
 public class ListCityFragment extends Fragment {
     private static final String LOG_TAG = "ListCityFragment";
     private CheckBox tempCheckBox, windCheckBox, humCheckBox;
-    private Button viewWatherBtn;
+    private MaterialButton viewWatherBtn;
     private boolean isCheckedTempCheckBox, isCheckedWindCheckBox, isCheckedHumCheckBox;
     private TextInputEditText inputCity;
     private OnFragmentInteractionListener mListener;
