@@ -11,8 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
-        <activity android:name=".SecondActivity"
-            android:theme="@style/AppTheme.ThemeOfActivitySecond">
+        <activity android:name=".SecondActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>

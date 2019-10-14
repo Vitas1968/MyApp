@@ -3,7 +3,6 @@
     <string name="app_name" translatable="false">MyApp</string>
     <string name="weather">Weather</string>
 
-    <string name="input_city">Input city</string>
     <string name="view_weather">Watch weather</string>
     <string name="temp" translatable="false">25 C</string>
     <string name="wind" translatable="false">8 m/s</string>
@@ -44,5 +43,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="input_city">Input city</string>
+    <string name="day_night_mode">Day/Night</string>
 
 </resources>

@@ -9,40 +9,52 @@
 
     <TextView
         android:id="@+id/myCityTv"
-        android:layout_marginTop="40dp"
+        style="@style/StyleOfTextVievSeconActivity"
+        android:layout_marginTop="25dp"
         android:background="@drawable/custom_border"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.527"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        style="@style/StyleOfTextVievSeconActivity" />
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/myTempTv"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/custom_border"
         style="@style/StyleOfTextVievSeconActivity"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/custom_border"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.527"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myCityTv" />
 
     <TextView
         android:id="@+id/windTv"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/custom_border"
         style="@style/StyleOfTextVievSeconActivity"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/custom_border"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.527"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myTempTv" />
 
     <TextView
         android:id="@+id/humidityTv"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/custom_border"
         style="@style/StyleOfTextVievSeconActivity"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/custom_border"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.527"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/windTv" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="371dp"
+        android:layout_height="371dp"
+        android:layout_marginTop="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/humidityTv" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
