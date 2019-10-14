@@ -41,45 +41,50 @@ public class SecondActivity extends AppCompatActivity implements ShowWeatherFrag
         windTv=fr.getView().findViewById(R.id.windTv);
         humidityTv=fr.getView().findViewById(R.id.humidityTv);
         resources=getResources();
-        indexCity=intent.getIntExtra("spinnerItemPosition", -1);
+        indexCity=intent.getIntExtra("city", -1);
     }
 
     private void outCity(){
         String []cityList=resources.getStringArray(R.array.cityList);
-        String city = cityList[indexCity];
-        cityTv.setText(city);
+
+        if (indexCity!=-1) {
+            String city = cityList[indexCity];
+            cityTv.setText(city);
+        } else { cityTv.setText("No city");
+        }
     }
 
     private void outTemp(){
         boolean checked =intent.getBooleanExtra("isCheckedTempCheckBox",false);
-        if (checked) {
-        String []tempList = resources.getStringArray(R.array.tempList);
+        if (checked && indexCity!=-1) {
+          String []tempList = resources.getStringArray(R.array.tempList);
             String tmp =resources.getString(R.string.tempNameCheckBox)
                                                     +" : "
                                                     + tempList[indexCity];
-            tempTv.setText(tmp);}
+            tempTv.setText(tmp);
+        } else tempTv.setText(resources.getString(R.string.no_data));
     }
 
     private void outWind(){
         boolean checked =intent.getBooleanExtra("isCheckedWindCheckBox",false);
-        if (checked) {
+        if (checked && indexCity!=-1) {
         String [] windList = resources.getStringArray(R.array.windList);
         String win =getResources().getString(R.string.windNameCheckBox)
                                                      +" : "
                                                      +windList[indexCity];
         windTv.setText(win);
-        }
+        } else windTv.setText(resources.getString(R.string.no_data));
     }
 
     private void outHumidity(){
         boolean checked =intent.getBooleanExtra("isCheckedHumCheckBox",false);
-        if (checked) {
+        if (checked && indexCity!=-1) {
             String [] humidityList = resources.getStringArray(R.array.humidityList);
                 String hum =getResources().getString(R.string.humidityNameCheckBox)
                                                             +" : "
                                                             + humidityList[indexCity];
                 humidityTv.setText(hum);
-        }
+        } else humidityTv.setText(resources.getString(R.string.no_data));
     }
 
     @Override
