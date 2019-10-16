@@ -4,22 +4,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-
 import android.widget.TextView;
 import com.example.googlelerning.myapp.R;
 import com.example.googlelerning.myapp.SecondActivity;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import java.util.Objects;
 
@@ -29,6 +25,7 @@ public class ListCityFragment extends Fragment {
     private MaterialButton viewWatherBtn;
     private boolean isCheckedTempCheckBox, isCheckedWindCheckBox, isCheckedHumCheckBox;
     private TextInputEditText inputCity;
+    private String city;
     private OnFragmentInteractionListener mListener;
     private Integer indexCity;
 
@@ -70,7 +67,7 @@ public class ListCityFragment extends Fragment {
                 if(event.getAction() == KeyEvent.ACTION_DOWN &&
                         (keyCode == KeyEvent.KEYCODE_ENTER)){
                     TextView tv = (TextView) v;
-                    indexCity=checkCity(tv);
+                    city = tv.getText().toString();
                     return true;
                 }
                 return false;
@@ -80,8 +77,7 @@ public class ListCityFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                //intent.putExtra("spinnerItemPosition", spinnerItemPosition);
-                intent.putExtra("city", indexCity);
+                intent.putExtra("city", city);
                 intent.putExtra("isCheckedHumCheckBox", isCheckedHumCheckBox);
                 intent.putExtra("isCheckedWindCheckBox", isCheckedWindCheckBox);
                 intent.putExtra("isCheckedTempCheckBox", isCheckedTempCheckBox);
@@ -93,19 +89,6 @@ public class ListCityFragment extends Fragment {
         return view;
     }
 
-    private Integer checkCity(TextView tv) {
-        String city = tv.getText().toString();
-        String[] arrayCity = getResources().getStringArray(R.array.cityList);
-        for (int i = 0; i < arrayCity.length; i++) {
-            if (city.equalsIgnoreCase(arrayCity[i])) {
-                Snackbar.make(tv, "Was chosen city "+arrayCity[i], Snackbar.LENGTH_LONG).show();
-                return i;
-            }
-        }
-        return -1;
-    }
-
-
     private void initView(View view){
         tempCheckBox=view.findViewById(R.id.tempCb);
         windCheckBox=view.findViewById(R.id.windCb);
@@ -114,8 +97,6 @@ public class ListCityFragment extends Fragment {
         inputCity=view.findViewById(R.id.inputCity);
 
     }
-
-
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -133,49 +114,6 @@ public class ListCityFragment extends Fragment {
         super.onDetach();
         Log.d(LOG_TAG,"Выполнен onDetach()");
         mListener = null;
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        Log.d(LOG_TAG,"Выполнен onStart()");
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.d(LOG_TAG,"Выполнен onResume()");
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        Log.d(LOG_TAG,"Выполнен onPause()");
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        Log.d(LOG_TAG,"Выполнен onStop()");
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        Log.d(LOG_TAG,"Выполнен onDestroyView()");
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Log.d(LOG_TAG,"Выполнен onDestroy()");
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        setRetainInstance(true);
-        Log.d(LOG_TAG,"Выполнен onViewCreated()");
     }
 
     public interface OnFragmentInteractionListener {
