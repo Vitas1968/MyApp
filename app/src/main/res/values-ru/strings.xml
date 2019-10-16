@@ -8,6 +8,7 @@
     <string name="humidityNameCheckBox">Влажность</string>
     <string name="cityNotInput">Город не введен</string>
     <string name="no_data">Нет данных</string>
+    <string name="place_not_found">Место не найдено</string>
 
     <string-array name="cityList">
         <item>Москва</item>
