@@ -3,12 +3,15 @@ package com.example.googlelerning.myapp;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.TextView;
 import com.example.googlelerning.myapp.fragments.ShowWeatherFragment;
-
+import com.example.googlelerning.myapp.weather_processing.WeatherDataLoader;
+import org.json.JSONException;
+import org.json.JSONObject;
+import java.util.Locale;
 import java.util.Objects;
 
 public class SecondActivity extends AppCompatActivity implements ShowWeatherFragment.OnFragmentInteractionListener {
@@ -17,10 +20,7 @@ public class SecondActivity extends AppCompatActivity implements ShowWeatherFrag
     private TextView tempTv;
     private TextView windTv;
     private TextView humidityTv;
-    private Intent intent;
-    private Resources resources;
-    private int indexCity;
-
+    private final Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,63 +28,84 @@ public class SecondActivity extends AppCompatActivity implements ShowWeatherFrag
         setContentView(R.layout.activity_second);
         Fragment showWeather = getSupportFragmentManager().findFragmentById(R.id.weather);
         initView(Objects.requireNonNull(showWeather));
-        outCity();
-        outTemp();
-        outWind();
-        outHumidity();
     }
 
     private void initView(Fragment fr) {
-        intent=getIntent();
+        Intent intent = getIntent();
         cityTv= Objects.requireNonNull(fr.getView()).findViewById(R.id.myCityTv);
         tempTv=fr.getView().findViewById(R.id.myTempTv);
         windTv=fr.getView().findViewById(R.id.windTv);
         humidityTv=fr.getView().findViewById(R.id.humidityTv);
-        resources=getResources();
-        indexCity=intent.getIntExtra("city", -1);
+        String city = intent.getStringExtra("city");
+        updateWeatherData(city);
     }
 
-    private void outCity(){
-        String []cityList=resources.getStringArray(R.array.cityList);
+    private void updateWeatherData(final String city) {
+        new Thread() {
+            @Override
+            public void run() {
+                final JSONObject jsonObject = WeatherDataLoader.getJSONData(city);
+                if(jsonObject == null) {
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            showActivityError();
+                        }
+                    });
+                } else {
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            renderWeather(jsonObject);
+                        }
+                    });
+                }
+            }
+        }.start();
+    }
 
-        if (indexCity!=-1) {
-            String city = cityList[indexCity];
-            cityTv.setText(city);
-        } else { cityTv.setText("No city");
+    private void renderWeather(JSONObject jsonObject) {
+        try {
+            JSONObject main = jsonObject.getJSONObject("main");
+            setPlaceName(jsonObject);
+            outHumidity(main);
+            setCurrentTemp(main);
+            outWind(jsonObject);
+        } catch (Exception exc) {
+            exc.printStackTrace();
         }
     }
 
-    private void outTemp(){
-        boolean checked =intent.getBooleanExtra("isCheckedTempCheckBox",false);
-        if (checked && indexCity!=-1) {
-          String []tempList = resources.getStringArray(R.array.tempList);
-            String tmp =resources.getString(R.string.tempNameCheckBox)
-                                                    +" : "
-                                                    + tempList[indexCity];
-            tempTv.setText(tmp);
-        } else tempTv.setText(resources.getString(R.string.no_data));
+    private void setPlaceName(JSONObject jsonObject) throws JSONException {
+        String cityText = jsonObject.getString("name").toUpperCase() + ", "
+                + jsonObject.getJSONObject("sys").getString("country");
+        cityTv.setText(cityText);
     }
 
-    private void outWind(){
-        boolean checked =intent.getBooleanExtra("isCheckedWindCheckBox",false);
-        if (checked && indexCity!=-1) {
-        String [] windList = resources.getStringArray(R.array.windList);
-        String win =getResources().getString(R.string.windNameCheckBox)
-                                                     +" : "
-                                                     +windList[indexCity];
-        windTv.setText(win);
-        } else windTv.setText(resources.getString(R.string.no_data));
+    private void outHumidity( JSONObject main) throws JSONException {
+        String outHumidity = "Humidity: " + main.getString("humidity") + "%";
+        humidityTv.setText(outHumidity);
     }
 
-    private void outHumidity(){
-        boolean checked =intent.getBooleanExtra("isCheckedHumCheckBox",false);
-        if (checked && indexCity!=-1) {
-            String [] humidityList = resources.getStringArray(R.array.humidityList);
-                String hum =getResources().getString(R.string.humidityNameCheckBox)
-                                                            +" : "
-                                                            + humidityList[indexCity];
-                humidityTv.setText(hum);
-        } else humidityTv.setText(resources.getString(R.string.no_data));
+    private void setCurrentTemp(JSONObject main) throws JSONException {
+        String currentTextText = String.format(Locale.getDefault(), "%.1f",
+                main.getDouble("temp")) + "\u2103";
+        tempTv.setText(currentTextText);
+    }
+
+    private void outWind(JSONObject jsonObject)throws JSONException {
+        JSONObject js_wind=jsonObject.getJSONObject("wind");
+        int speed_wind = js_wind.getInt("speed");
+        String wind = speed_wind + " m/s";
+        windTv.setText(wind);
+
+    }
+    private void showActivityError(){
+        Intent intent=new Intent();
+        String notFound=getResources().getString(R.string.place_not_found);
+        intent.putExtra("notFound",notFound);
+        intent.setClass(Objects.requireNonNull(getApplicationContext()), ErrorActivity.class);
+        startActivity(intent);
     }
 
     @Override
