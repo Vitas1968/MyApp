@@ -20,14 +20,9 @@ import com.example.googlelerning.myapp.recicler.RecyclerViewAdapter;
 import java.util.ArrayList;
 import java.util.Objects;
 
-
 public class ShowWeatherFragment extends Fragment  {
     private OnFragmentInteractionListener mListener;
     private RecyclerView recyclerView;
-
-    public ShowWeatherFragment() {
-        // Required empty public constructor
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -77,12 +72,6 @@ public class ShowWeatherFragment extends Fragment  {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.addItemDecoration(itemDecoration);
         recyclerView.setAdapter(adapter);
-    }
-
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
     }
 
     @Override
