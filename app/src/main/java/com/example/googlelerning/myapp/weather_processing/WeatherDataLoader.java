@@ -7,15 +7,15 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-class WeatherDataLoader {
-    private static final String OPEN_WEATHER_API_KEY = "6ca9777de46f536071253935840cba46"; // f3f2763fe63803beef4851d6365c83bc
+public class WeatherDataLoader {
+    private static final String OPEN_WEATHER_API_KEY = "6ca9777de46f536071253935840cba46";
     private static final String OPEN_WEATHER_API_URL =
             "https://api.openweathermap.org/data/2.5/weather?q=%s&units=metric";
     private static final String KEY = "x-api-key";
     private static final String RESPONSE = "cod";
     private static final int ALL_GOOD = 200;
 
-    static JSONObject getJSONData(String city) {
+    public static JSONObject getJSONData(String city) {
         try {
             URL url = new URL(String.format(OPEN_WEATHER_API_URL, city));
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
